@@ -1,0 +1,27 @@
+{
+  "name": "cachette",
+  "description": "",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "compile": "./node_modules/.bin/tsc"
+  },
+  "author": "david martin",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-typescript": "^7.22.5",
+    "@types/jest": "^29.5.3",
+    "@types/lodash": "^4.14.196",
+    "babel-jest": "^29.6.2",
+    "jest": "^29.6.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0",
+    "lodash": "^4.17.21"
+  }
+}
