@@ -1,27 +1,54 @@
 {
-  "name": "cachette",
-  "description": "",
+  "name": "@dfmcx/cachette",
   "version": "0.0.1",
-  "main": "index.js",
+  "description": "cache and memoizer from typescript",
+  "author": "David Martin",
+  "license": "MIT",
+  "homepage": "https://github.com/dfmcx/cachette#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfmcx/cachette.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dfmcx/cachette/issues"
+  },
+  "keywords": [
+    "cache",
+    "memoize",
+    "memoizer",
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "test": "jest",
-    "compile": "./node_modules/.bin/tsc"
+    "compile": "tsc",
+    "prepublish": "tsc && npm pack",
+    "prepare": "npm run compile",
+    "prepublishOnly": "npm test",
+    "preversion": "npm test"
+    
   },
-  "author": "david martin",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-typescript": "^7.22.5",
     "@types/jest": "^29.5.3",
     "@types/lodash": "^4.14.196",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
     "babel-jest": "^29.6.2",
+    "eslint": "^8.46.0",
     "jest": "^29.6.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "date-fns": "^2.30.0",
     "lodash": "^4.17.21"
   }
 }

@@ -1,5 +1,6 @@
 import { Cache } from './cache'
 import type { Value } from './cache'
+
 export const memoizer = <T, R extends Value>(fn: (args: T) => R) => {
     const cache = new Cache();
     if (typeof fn !== 'function') {

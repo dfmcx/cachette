@@ -1,5 +1,4 @@
 import { Cache }  from '../src/cache';
-import addMilliseconds from 'date-fns/addMilliseconds';
 
 
 // const wait = async (ms: number) => new Promise<void>((resolve, reject) => setTimeout(() => resolve(), ms));
@@ -118,14 +117,14 @@ describe('cache', () => {
   it('expires items', async () => {
     jest.useFakeTimers();
     const cut = new Cache({ lifetime: { duration: 500 } });
-  
+    
     await cut.add('key1','value1');
     const firstTry = await cut.get('key1');
     expect(firstTry).toBe('value1');
     const secondTry = await cut.get('key1');
     expect(secondTry).toBe('value1');
     const realDate = Date.now;
-    const futureDate = addMilliseconds(Date.now(), 600);
+    const futureDate = Date.now() + 600;
     global.Date.now = jest.fn(() => futureDate) as any;
     jest.advanceTimersByTime(501);
 
