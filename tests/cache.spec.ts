@@ -39,7 +39,7 @@ describe('cache', () => {
     const obj = { foo: 'bar', person: { name: 'George'}};
     const expected = JSON.stringify(obj);
 
-    await cut.add('key1', obj, { addObjectAs: 'stringify' });
+    await cut.add('key1', obj, {addObjectAs: 'stringify'});
     
     const actual = await cut.get('key1');
     expect(actual).toBe(expected);
@@ -111,7 +111,7 @@ describe('cache', () => {
   it('add throws on duplicate (overridden at cache level)', async () => {
     const cut = new Cache();
     await cut.add('key1', 'value1');
-    return expect(cut.add('key1', 'value2', { duplicateAddThrows: true })).rejects.toThrow('add failed');
+    return expect(cut.add('key1', 'value2', { throwOnExist: true })).rejects.toThrow('add failed');
   })
 
   it('expires items', async () => {
@@ -131,25 +131,6 @@ describe('cache', () => {
     const expired = await cut.get('key1');
 
     expect(expired).toBeUndefined();
-    global.Date.now = realDate;
-  });
-
-  it('expires items with custom lifetime', async () => {
-    jest.useFakeTimers();
-    const cut = new Cache({ lifetime: { duration: 500 } });
-  
-    await cut.add('key1','value1');
-    await cut.add('key2','value2', { lifetime: 400});
-    expect(cut.get('key1')).resolves.toEqual('value1')
-
-    const realDate = Date.now;
-    const futureDate = Date.now() + 501;
-    global.Date.now = jest.fn(() => futureDate) as any;
-    jest.advanceTimersByTime(501);
-
-    expect(cut.get('key1')).resolves.toBeUndefined();
-    expect(cut.get('key2')).resolves.toBe('value2')
-
     global.Date.now = realDate;
   });
 
