@@ -1,6 +1,5 @@
 import { memoizer } from '../src/memoizer';
 
-const fixedDate = Date.now();
 interface Person {
     name: string
 }
@@ -23,7 +22,6 @@ describe('memoizer', () => {
 
         expect(actual).toBe(expected)
 
-
         global.Date.now = realDate;
     })
 
@@ -45,7 +43,6 @@ describe('memoizer', () => {
         const actual = await fn(obj);
 
         expect(actual).toBe(expected)
-
 
         global.Date.now = realDate;
     })
