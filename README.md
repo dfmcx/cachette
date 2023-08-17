@@ -22,9 +22,9 @@ The cache object can take an options object in the constructor.
 |property              |type                                             |default        |description                                       |
 |--------------------  |-------------------------------------------------|---------------|--------------------------------------------------|
 | `addObjectAs`        | `string` - optional <br/><sup>('clone' \| 'stringify' \| 'byReference'</sup> | 'byReference' | Sets how objects will be stored within the cache |
-| `limit` | `number` - optional | `undefined` <br />  <sup><sub>(no limit)</sub></sup> | Set the maximun number of entries allowed in the cache. Uses first-in-first-out. If no value is provided or set to 0 no limit will be the behavior. |
 | `duplicateAddThrows` | `boolean` -optional | `false` | If `true` the `add` operation will throw an exception if the key already exists in the cache. Otherwise the key will be replaced with the new value. |
 | `lifetime` | [Lifetime Options](#lifetime-options) - optional | `undefined` - see defaults for lifetime options | Configures the various options for controlling how the lifetime of cache entries is handled. |
+| `limit` | `number` - optional | `undefined` <br />  <sup><sub>(no limit)</sub></sup> | Set the maximun number of entries allowed in the cache. Uses first-in-first-out. If no value is provided or set to 0 no limit will be the behavior. |
 | `throwOnEmoty` | `boolean` - optional | `false` | If `true` the `get` operation will throw an exception if the key requested is not in the cache. Otherwise, the cache will return `undefined`.|
 
 ### Lifetime Options
